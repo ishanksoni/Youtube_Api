@@ -20,3 +20,6 @@ class VideoList(generics.ListAPIView):
 
     # Serialize class.
     serializer_class = VideosSerializer
+
+    # Pagination
+    pagination_class = VideoListPagination

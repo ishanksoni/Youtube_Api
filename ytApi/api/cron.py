@@ -21,7 +21,7 @@ class CronJob(CronJobBase):
         print("Test Passed")
 
         # Api Keys stored in envionment variable.
-        apiKeys = settings.GOOGLE_API_KEYS
+        apiKeys = settings.API_KEYS
 
         # Current Time
         currTime = datetime.now()

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,8 +124,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+API_KEYS = ['AIzaSyBV7UyVyCXYUTAMQGRc5r9PINAfHTsybA8', 'AIzaSyBV7UyVyCXYUTAMQGRc5r9PINAfHTsybA8']
 
-GOOGLE_API_KEYS = ['AIzaSyBV7UyVyCXYUTAMQGRc5r9PINAfHTsybA8']
+with open('apiKeys.txt') as f:
+    API_KEYS = [line.rstrip() for line in f]
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',

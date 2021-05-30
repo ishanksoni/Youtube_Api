@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api',
+    'django_cron',
+    'django_crontab',
     'rest_framework',
+    'django_filters',
 ]
 
 
@@ -71,6 +74,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ytApi.wsgi.application'
+
+CRON_CLASSES = [
+    "api.cron.CronJob",
+]
 
 
 # Database
@@ -108,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -117,9 +124,12 @@ USE_L10N = True
 USE_TZ = True
 
 
+GOOGLE_API_KEYS = ['AIzaSyBV7UyVyCXYUTAMQGRc5r9PINAfHTsybA8']
+
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
 }
 
 # Static files (CSS, JavaScript, Images)

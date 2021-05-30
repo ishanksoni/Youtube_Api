@@ -8,15 +8,14 @@ from django.db import models
 
 # Video table class
 class Videos(models.Model):
-
     # ID
     videoId = models.CharField(null = False, blank = False, max_length = 100)
 
     # Title
-    title = models.CharField( null = True, blank = True, max_length = 100)
+    title = models.CharField( null = True, blank = True, max_length = 1000)
 
     # Discription
-    description = models.CharField(null = True, blank = True, max_length = 1000)
+    description = models.CharField(null = True, blank = True, max_length = 5000)
 
     # Published Time
     publishedTime = models.DateTimeField()
@@ -26,6 +25,3 @@ class Videos(models.Model):
 
     # Channel Title
     channelTitle = models.CharField(null = True, blank = True, max_length = 100)
-
-    # Current Time in db.
-    created = models.DateTimeField(null = True, blank = True, auto_now_add=True)

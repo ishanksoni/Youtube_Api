@@ -1,18 +1,22 @@
 from django.shortcuts import render
 from .models import *
 from .serializers import *
+from rest_framework import filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from .pagination import *
 
 
-class ResultsPagination(CursorPagination):
-    page_size = 10
-    page_size_query_param = 'page_size'
-    max_page_size = 100
-
+# View Function for the rest_api call of video list.
 class VideoList(generics.ListAPIView):
+    searchFields = ['title']
+    filterBackends = (filters.SearchFilter, DjangoFilterBackend ,filters.OrderingFilter)
+    filterset_fields = ['channelTitle']
 
-    queryset = Videos.objects.all().order_by('-publishedTime')
+    defaaultOrdering = ('-publishedTime')
 
+    # Query set for data in db.
+    queryset = Videos.objects.all()
+
+    # Serialize class.
     serializer_class = VideosSerializer
-    pagination_class = ResultsPagination 

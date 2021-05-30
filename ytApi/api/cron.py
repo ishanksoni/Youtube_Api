@@ -8,7 +8,8 @@ from datetime import datetime, timedelta
 
 # Cron class to fetch videos as scheduled.
 class CronJob(CronJobBase):
-    RUN_EVERY_MINS = 10 # 10 minutes
+
+    RUN_EVERY_MINS = (10/ 60)  # 10 second
 
     schedule = Schedule(run_every_mins = RUN_EVERY_MINS)
 
@@ -27,7 +28,7 @@ class CronJob(CronJobBase):
 
         print(currTime)
 
-        latestTime = currTime - timedelta(minutes = 10)
+        latestTime = currTime - timedelta(minutes = 1)
 
         # To check if a valid API key exists or not in the apikeys.
         isValid = False
@@ -54,7 +55,7 @@ class CronJob(CronJobBase):
                 code = error.resp.status
                 
                 print("is in valid")
-                
+
                 if ((code == 400 or code == 403) ==  False):
                     break
 
